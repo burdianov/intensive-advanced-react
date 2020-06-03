@@ -1,0 +1,8 @@
+# remove git local cache
+$ git rm -r --cached .idea
+
+# create functional component
+rsc
+
+# create functional component with PropTypes
+rscp
