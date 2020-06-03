@@ -63,7 +63,7 @@ export const signUp = (email, password) => async (dispatch) => {
   });
 
   try {
-    const user = apiService.signUp(email, password);
+    const user = await apiService.signUp(email, password);
 
     dispatch({
       type: SIGN_UP_SUCCESS,

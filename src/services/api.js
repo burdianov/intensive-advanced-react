@@ -7,9 +7,8 @@ class ApiService {
     this.fb = firebase.initializeApp(firebaseConfig);
   }
 
-  signUp = async (email, password) => {
-    await this.fb.auth().createUserWithEmailAndPassword(email, password);
-  };
+  signUp = (email, password) =>
+    this.fb.auth().createUserWithEmailAndPassword(email, password);
 }
 
 export default new ApiService(firebaseConfig);
