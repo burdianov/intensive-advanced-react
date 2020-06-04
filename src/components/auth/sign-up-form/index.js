@@ -1,12 +1,10 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { signUp } from "../../../ducks/auth";
 
-const SignUpForm = () => {
-  const dispatch = useDispatch();
-  const handleSubmit = ({ email, password }) =>
-    dispatch(signUp(email, password));
+const SignUpForm = ({ signUp }) => {
+  const handleSubmit = ({ email, password }) => signUp(email, password);
 
   return (
     <div>
@@ -43,4 +41,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default connect(null, { signUp })(SignUpForm);
