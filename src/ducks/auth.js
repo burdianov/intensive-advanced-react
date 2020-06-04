@@ -12,6 +12,7 @@ const prefix = `${appName}/${moduleName}`;
 export const SIGN_UP_START = `${prefix}/SIGN_UP_START`;
 export const SIGN_UP_SUCCESS = `${prefix}/SIGN_UP_SUCCESS`;
 export const SIGN_UP_ERROR = `${prefix}/SIGN_UP_ERROR`;
+export const AUTH_CHANGE = `${prefix}/AUTH_CHANGE`;
 
 /**
  * Reducer
@@ -28,6 +29,8 @@ export default function reducer(state = new ReducerRecord(), action) {
   switch (type) {
     case SIGN_UP_START:
       return state.set("loading", true);
+    case AUTH_CHANGE:
+
     case SIGN_UP_SUCCESS:
       return state
         .set("loading", false)
@@ -75,4 +78,17 @@ export const signUp = (email, password) => async (dispatch) => {
       error,
     });
   }
+};
+
+/**
+ * Init Logic
+ */
+
+export const init = (store) => {
+  apiService.onAuthChange((user) => {
+    store.dispatch({
+      type: AUTH_CHANGE,
+      payload: { user },
+    });
+  });
 };
